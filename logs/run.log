@@ -1,0 +1,164 @@
+2015-11-19 12:11:11.745 INFO  [n.f.c.m.FloodlightModuleLoader] Loading modules from src/main/resources/floodlightdefault.properties
+2015-11-19 12:11:11.890 WARN  [n.f.r.RestApiServer] HTTPS disabled; HTTPS will not be used to connect to the REST API.
+2015-11-19 12:11:11.890 WARN  [n.f.r.RestApiServer] HTTP enabled; Allowing unsecure access to REST API on port 8080.
+2015-11-19 12:11:12.344 ERROR [o.s.s.i.c.DelegatingCCProvider] Failed to initialize provider org.sdnplatform.sync.internal.config.SyncStoreCCProvider
+org.sdnplatform.sync.error.PersistException: Could not initialize persistent storage
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.<init>(JavaDBStorageEngine.java:102) ~[bin/:na]
+	at org.sdnplatform.sync.internal.StoreRegistry.register(StoreRegistry.java:114) ~[bin/:na]
+	at org.sdnplatform.sync.internal.SyncManager.registerPersistentStore(SyncManager.java:178) [bin/:na]
+	at org.sdnplatform.sync.internal.config.SyncStoreCCProvider.init(SyncStoreCCProvider.java:85) ~[bin/:na]
+	at org.sdnplatform.sync.internal.config.DelegatingCCProvider.init(DelegatingCCProvider.java:37) ~[bin/:na]
+	at org.sdnplatform.sync.internal.SyncManager.init(SyncManager.java:476) [bin/:na]
+	at net.floodlightcontroller.core.module.FloodlightModuleLoader.initModules(FloodlightModuleLoader.java:460) [bin/:na]
+	at net.floodlightcontroller.core.module.FloodlightModuleLoader.loadModulesFromList(FloodlightModuleLoader.java:295) [bin/:na]
+	at net.floodlightcontroller.core.module.FloodlightModuleLoader.loadModulesFromConfig(FloodlightModuleLoader.java:235) [bin/:na]
+	at net.floodlightcontroller.core.Main.main(Main.java:61) [bin/:na]
+Caused by: java.sql.SQLException: Failed to create database '/var/lib/floodlight/SyncDB', see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection30.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbeddedDataSource.getConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbedPooledConnection.openRealConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbedPooledConnection.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbedPooledConnection40.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.Driver40.getNewPooledConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource.createPooledConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource.getPooledConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.getConnection(JavaDBStorageEngine.java:365) ~[bin/:na]
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.initTable(JavaDBStorageEngine.java:372) ~[bin/:na]
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.<init>(JavaDBStorageEngine.java:100) ~[bin/:na]
+	... 9 common frames omitted
+Caused by: org.apache.derby.impl.jdbc.EmbedSQLException: Failed to create database '/var/lib/floodlight/SyncDB', see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	... 28 common frames omitted
+Caused by: org.apache.derby.impl.jdbc.EmbedSQLException: Directory /var/lib/floodlight/SyncDB cannot be created.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.wrapInSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.handleException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	... 25 common frames omitted
+Caused by: org.apache.derby.iapi.error.StandardException: Directory /var/lib/floodlight/SyncDB cannot be created.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$9.run(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.7.0_79]
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	... 25 common frames omitted
+2015-11-19 12:11:12.356 WARN  [n.f.c.i.OFSwitchManager] SSL disabled. Using unsecure connections between Floodlight and switches.
+2015-11-19 12:11:12.356 INFO  [n.f.c.i.OFSwitchManager] Clear switch flow tables on initial handshake as master: TRUE
+2015-11-19 12:11:12.356 INFO  [n.f.c.i.OFSwitchManager] Clear switch flow tables on each transition to master: TRUE
+2015-11-19 12:11:12.357 INFO  [n.f.c.i.OFSwitchManager] Setting 0x2 as the default max tables to receive table-miss flow
+2015-11-19 12:11:12.363 INFO  [n.f.c.i.OFSwitchManager] Setting max tables to receive table-miss flow to 0x1 for DPID 00:00:00:00:00:00:00:01
+2015-11-19 12:11:12.363 INFO  [n.f.c.i.OFSwitchManager] Setting max tables to receive table-miss flow to 0x1 for DPID 00:00:00:00:00:00:00:02
+2015-11-19 12:11:12.452 INFO  [n.f.c.i.OFSwitchManager] Computed OpenFlow version bitmap as [62]
+2015-11-19 12:11:12.455 INFO  [n.f.c.i.Controller] Controller role set to ACTIVE
+2015-11-19 12:11:12.467 INFO  [n.f.l.i.LinkDiscoveryManager] Link latency history set to 10 LLDP data points
+2015-11-19 12:11:12.468 INFO  [n.f.l.i.LinkDiscoveryManager] Latency update threshold set to +/-0.5 (50.0%) of rolling historical average
+2015-11-19 12:11:12.478 INFO  [n.f.f.Forwarding] Default hard timeout not configured. Using 0.
+2015-11-19 12:11:12.478 INFO  [n.f.f.Forwarding] Default idle timeout not configured. Using 5.
+2015-11-19 12:11:12.479 INFO  [n.f.f.Forwarding] Default priority not configured. Using 1.
+2015-11-19 12:11:12.479 INFO  [n.f.f.Forwarding] Default flags will be empty.
+2015-11-19 12:11:12.479 INFO  [n.f.f.Forwarding] Default flow matches set to: VLAN=true, MAC=true, IP=true, TPPT=true
+2015-11-19 12:11:12.479 INFO  [n.f.f.Forwarding] Not flooding ARP packets. ARP flows will be inserted for known destinations
+2015-11-19 12:11:12.619 INFO  [n.f.c.i.OFSwitchManager] Listening for switch connections on 0.0.0.0/0.0.0.0:6653
+2015-11-19 12:11:12.626 INFO  [n.f.l.i.LinkDiscoveryManager] Setting autoportfast feature to OFF
+2015-11-19 12:11:16.446 INFO  [n.f.j.JythonServer] Starting DebugServer on :6655
+2015-11-19 12:11:27.630 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports
+2015-11-19 12:12:24.856 INFO  [n.f.c.m.FloodlightModuleLoader] Loading modules from src/main/resources/floodlightdefault.properties
+2015-11-19 12:12:25.3 WARN  [n.f.r.RestApiServer] HTTPS disabled; HTTPS will not be used to connect to the REST API.
+2015-11-19 12:12:25.3 WARN  [n.f.r.RestApiServer] HTTP enabled; Allowing unsecure access to REST API on port 8080.
+2015-11-19 12:12:25.441 ERROR [o.s.s.i.c.DelegatingCCProvider] Failed to initialize provider org.sdnplatform.sync.internal.config.SyncStoreCCProvider
+org.sdnplatform.sync.error.PersistException: Could not initialize persistent storage
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.<init>(JavaDBStorageEngine.java:102) ~[bin/:na]
+	at org.sdnplatform.sync.internal.StoreRegistry.register(StoreRegistry.java:114) ~[bin/:na]
+	at org.sdnplatform.sync.internal.SyncManager.registerPersistentStore(SyncManager.java:178) [bin/:na]
+	at org.sdnplatform.sync.internal.config.SyncStoreCCProvider.init(SyncStoreCCProvider.java:85) ~[bin/:na]
+	at org.sdnplatform.sync.internal.config.DelegatingCCProvider.init(DelegatingCCProvider.java:37) ~[bin/:na]
+	at org.sdnplatform.sync.internal.SyncManager.init(SyncManager.java:476) [bin/:na]
+	at net.floodlightcontroller.core.module.FloodlightModuleLoader.initModules(FloodlightModuleLoader.java:460) [bin/:na]
+	at net.floodlightcontroller.core.module.FloodlightModuleLoader.loadModulesFromList(FloodlightModuleLoader.java:295) [bin/:na]
+	at net.floodlightcontroller.core.module.FloodlightModuleLoader.loadModulesFromConfig(FloodlightModuleLoader.java:235) [bin/:na]
+	at net.floodlightcontroller.core.Main.main(Main.java:61) [bin/:na]
+Caused by: java.sql.SQLException: Failed to create database '/var/lib/floodlight/SyncDB', see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection30.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbeddedDataSource.getConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbedPooledConnection.openRealConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbedPooledConnection.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbedPooledConnection40.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.Driver40.getNewPooledConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource.createPooledConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource.getPooledConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.getConnection(JavaDBStorageEngine.java:365) ~[bin/:na]
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.initTable(JavaDBStorageEngine.java:372) ~[bin/:na]
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.<init>(JavaDBStorageEngine.java:100) ~[bin/:na]
+	... 9 common frames omitted
+Caused by: org.apache.derby.impl.jdbc.EmbedSQLException: Failed to create database '/var/lib/floodlight/SyncDB', see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	... 28 common frames omitted
+Caused by: org.apache.derby.impl.jdbc.EmbedSQLException: Directory /var/lib/floodlight/SyncDB cannot be created.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.wrapInSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.handleException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	... 25 common frames omitted
+Caused by: org.apache.derby.iapi.error.StandardException: Directory /var/lib/floodlight/SyncDB cannot be created.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$9.run(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.7.0_79]
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	... 25 common frames omitted
+2015-11-19 12:12:25.453 WARN  [n.f.c.i.OFSwitchManager] SSL disabled. Using unsecure connections between Floodlight and switches.
+2015-11-19 12:12:25.453 INFO  [n.f.c.i.OFSwitchManager] Clear switch flow tables on initial handshake as master: TRUE
+2015-11-19 12:12:25.454 INFO  [n.f.c.i.OFSwitchManager] Clear switch flow tables on each transition to master: TRUE
+2015-11-19 12:12:25.454 INFO  [n.f.c.i.OFSwitchManager] Setting 0x2 as the default max tables to receive table-miss flow
+2015-11-19 12:12:25.459 INFO  [n.f.c.i.OFSwitchManager] Setting max tables to receive table-miss flow to 0x1 for DPID 00:00:00:00:00:00:00:01
+2015-11-19 12:12:25.460 INFO  [n.f.c.i.OFSwitchManager] Setting max tables to receive table-miss flow to 0x1 for DPID 00:00:00:00:00:00:00:02
+2015-11-19 12:12:25.551 INFO  [n.f.c.i.OFSwitchManager] Computed OpenFlow version bitmap as [62]
+2015-11-19 12:12:25.554 INFO  [n.f.c.i.Controller] Controller role set to ACTIVE
+2015-11-19 12:12:25.571 INFO  [n.f.l.i.LinkDiscoveryManager] Link latency history set to 10 LLDP data points
+2015-11-19 12:12:25.572 INFO  [n.f.l.i.LinkDiscoveryManager] Latency update threshold set to +/-0.5 (50.0%) of rolling historical average
+2015-11-19 12:12:25.584 INFO  [n.f.f.Forwarding] Default hard timeout not configured. Using 0.
+2015-11-19 12:12:25.584 INFO  [n.f.f.Forwarding] Default idle timeout not configured. Using 5.
+2015-11-19 12:12:25.584 INFO  [n.f.f.Forwarding] Default priority not configured. Using 1.
+2015-11-19 12:12:25.584 INFO  [n.f.f.Forwarding] Default flags will be empty.
+2015-11-19 12:12:25.584 INFO  [n.f.f.Forwarding] Default flow matches set to: VLAN=true, MAC=true, IP=true, TPPT=true
+2015-11-19 12:12:25.584 INFO  [n.f.f.Forwarding] Not flooding ARP packets. ARP flows will be inserted for known destinations
+2015-11-19 12:12:25.717 INFO  [n.f.c.i.OFSwitchManager] Listening for switch connections on 0.0.0.0/0.0.0.0:6653
+2015-11-19 12:12:25.723 INFO  [n.f.l.i.LinkDiscoveryManager] Setting autoportfast feature to OFF
+2015-11-19 12:12:29.452 INFO  [n.f.j.JythonServer] Starting DebugServer on :6655
+2015-11-19 12:12:40.726 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports
+2015-11-19 12:12:55.730 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports
+2015-11-19 12:13:10.733 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports
+2015-11-19 12:13:25.737 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports
+2015-11-19 12:13:40.740 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports
+2015-11-19 12:13:55.744 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports
+2015-11-19 12:14:10.747 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports
+2015-11-19 12:14:25.751 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports
+2015-11-19 12:14:40.754 INFO  [n.f.l.i.LinkDiscoveryManager] Sending LLDP packets out of all the enabled ports

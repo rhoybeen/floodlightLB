@@ -1,0 +1,55 @@
+2015-11-25 12:41:11,618 [main] ERROR org.sdnplatform.sync.internal.config.DelegatingCCProvider - Failed to initialize provider org.sdnplatform.sync.internal.config.SyncStoreCCProvider
+org.sdnplatform.sync.error.PersistException: Could not initialize persistent storage
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.<init>(JavaDBStorageEngine.java:102) ~[bin/:na]
+	at org.sdnplatform.sync.internal.StoreRegistry.register(StoreRegistry.java:114) ~[bin/:na]
+	at org.sdnplatform.sync.internal.SyncManager.registerPersistentStore(SyncManager.java:178) [bin/:na]
+	at org.sdnplatform.sync.internal.config.SyncStoreCCProvider.init(SyncStoreCCProvider.java:85) ~[bin/:na]
+	at org.sdnplatform.sync.internal.config.DelegatingCCProvider.init(DelegatingCCProvider.java:37) ~[bin/:na]
+	at org.sdnplatform.sync.internal.SyncManager.init(SyncManager.java:476) [bin/:na]
+	at net.floodlightcontroller.core.module.FloodlightModuleLoader.initModules(FloodlightModuleLoader.java:460) [bin/:na]
+	at net.floodlightcontroller.core.module.FloodlightModuleLoader.loadModulesFromList(FloodlightModuleLoader.java:295) [bin/:na]
+	at net.floodlightcontroller.core.module.FloodlightModuleLoader.loadModulesFromConfig(FloodlightModuleLoader.java:235) [bin/:na]
+	at net.floodlightcontroller.core.Main.main(Main.java:61) [bin/:na]
+Caused by: java.sql.SQLException: Failed to create database '/var/lib/floodlight/SyncDB', see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection30.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbeddedDataSource.getConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbedPooledConnection.openRealConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbedPooledConnection.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbedPooledConnection40.<init>(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.Driver40.getNewPooledConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource.createPooledConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource.getPooledConnection(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.getConnection(JavaDBStorageEngine.java:365) ~[bin/:na]
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.initTable(JavaDBStorageEngine.java:372) ~[bin/:na]
+	at org.sdnplatform.sync.internal.store.JavaDBStorageEngine.<init>(JavaDBStorageEngine.java:100) ~[bin/:na]
+	... 9 common frames omitted
+Caused by: org.apache.derby.impl.jdbc.EmbedSQLException: Failed to create database '/var/lib/floodlight/SyncDB', see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	... 28 common frames omitted
+Caused by: org.apache.derby.impl.jdbc.EmbedSQLException: Directory /var/lib/floodlight/SyncDB cannot be created.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.wrapInSQLException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.handleException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	... 25 common frames omitted
+Caused by: org.apache.derby.iapi.error.StandardException: Directory /var/lib/floodlight/SyncDB cannot be created.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$9.run(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.7.0_79]
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source) ~[derby-10.9.1.0.jar:na]
+	... 25 common frames omitted
