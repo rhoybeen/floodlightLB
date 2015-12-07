@@ -24,6 +24,8 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.MappingJsonFactory;
 
+import net.floodlightcontroller.packet.IPv4;
+
 import org.projectfloodlight.openflow.types.IpProtocol;
 import org.restlet.resource.Delete;
 import org.restlet.resource.Get;
@@ -57,6 +59,7 @@ public class PoolsResource extends ServerResource {
         LBPool pool=null;
         try {
             pool=jsonToPool(postData);
+            log.info("Created New Pool id: {}	 VipId: {}", new Object[]{pool.id,pool.vipId } );
         } catch (IOException e) {
             log.error("Could not parse JSON {}", e.getMessage());
         }

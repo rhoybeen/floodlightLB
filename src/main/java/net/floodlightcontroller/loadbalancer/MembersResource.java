@@ -57,6 +57,8 @@ public class MembersResource extends ServerResource {
         LBMember member=null;
         try {
             member=jsonToMember(postData);
+            log.info("Created New LBMember id:{}    Addr:{}    PoolID:{}    VipId:{}", new Object[]{member.id,IPv4.fromIPv4Address(member.address),member.poolId,member.vipId } );
+ 
         } catch (IOException e) {
             log.error("Could not parse JSON {}", e.getMessage());
         }

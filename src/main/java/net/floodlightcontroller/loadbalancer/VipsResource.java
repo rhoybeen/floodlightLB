@@ -58,6 +58,7 @@ public class VipsResource extends ServerResource {
         LBVip vip=null;
         try {
             vip=jsonToVip(postData);
+            log.info("Created New Vip id: {}	Addr: {}", new Object[]{vip.id,IPv4.fromIPv4Address(vip.address) } );
         } catch (IOException e) {
             log.error("Could not parse JSON {}", e.getMessage());
         }
@@ -159,7 +160,7 @@ public class VipsResource extends ServerResource {
                     jp.getText());
         }
         jp.close();
-        
+
         return vip;
     }
     
